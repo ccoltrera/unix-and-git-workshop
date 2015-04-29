@@ -1,0 +1,229 @@
+- - - Unix Commands - - -
+
+	pwd	print working directory ; 
+			displays the absolute path to where you are
+
+	cd	change directory : 
+			navigates to a different directory
+		+ arguments :
+			absolute or relative path
+			no argument will go back to home
+			.. goes one filesystem up (can be chained ../..)
+
+	ls	list :
+			lists the contents of the present working directory
+		+ flags :
+			-t : sorts by modification time
+			-l : shows in a long format
+			-r : reverses the order
+			-a : shows all files, even hidden ones
+			-d : lists a directory, not its contents
+		+ arguments :
+			path a directory
+			no argument lists current directory
+
+	man	manual :
+			prints out a manual for any command
+		+ arguments :
+			any command
+
+	touch	:
+			change file access and modification times
+			creates a file if it doesn’t exist
+		+ arguments
+			file name
+
+	mkdir	make directory : 
+			creates a directory
+		+ flags
+			-p creates a directory tree as many deep as you specify
+
+	history	:
+			provides a history of commands
+		+ arguments
+			integers give you a list of the -- most recent commands
+
+	less	:
+			allows user to control movement through the reading of a file
+
+	head	 :
+			displays the beginning of a file
+		+ flags
+			-n +int shows the first int lines of a file
+
+	mv	move : 
+		moves a file to a new location (is also used for renaming files)
+		+ arguments
+			file location
+
+	nano
+		text editor
+
+	cat 	concatenate :
+			prints a file to the shell / concatenates two files together
+		+ arguments
+			file names
+
+	cp	copy :
+			copies a file or directory
+		+ arguments
+			file / directory to be copied
+			new file / directory name
+		+ flags
+			-r (recursive) allows directories to be copied
+
+	rm	remove :
+			removes a file / directory
+		+ arguments
+			file / directory to be removed
+		+ flags
+			-r (recursive) allows directories to be copied
+
+	whoami	:
+			returns the name of the current user
+
+	adduser	:
+			(must be done in sudo in Linux) adds a new user
+
+	su	switch user :
+			switches between users
+
+	exit	:
+			exits out of a switched user
+
+	chmod	change mode : 
+			changes permissions (mode) for a file / directory
+		+arguments
+			u/g/o (user / group / other) +/- r/w /x (read / write / execute)
+				ex: u-x
+				ex: ugo+x
+			rwx notation (r = 4, w = 2, x = 1) ugo
+				ex: 644
+
+	chown	change owner :
+			changes the owner of a file / directory
+			must be done in sudo
+		+arguments
+			new-user:new-group file-name (chown colincoltrera tester.txt)
+
+	top	:
+			displays running processes and resources used
+
+	ps	processes :
+			lists out running processes
+		+option
+			aux
+				lists all processes running on a machine
+
+	grep	:
+		searches for a pattern in an input, filters only lines with that pattern
+
+	fg	foreground :
+			resumes a stopped job
+		+arguments
+			job number (can be seen with jobs)
+
+	jobs	:
+			returns a list of processes in current session
+
+	kill	:
+			kills a process, using its process ID (sends a TERM signal)
+			with option, sends signal to a process
+		+options
+			-TERM sends a normal TERM signal
+			-KILL / -SIGKILL / -9 forces the killing of a process (dangerous)
+			-STOP stops a process, can be restarted later
+		
+	rmdir	remove directory :
+			removes an empty directory
+
+- - -  - - -
+
+	|	pipe : 
+			pipes first command output to next command
+		history | less
+
+	>	redirection operator :
+			makes output a new file
+		history > terminal-history.txt
+
+	>>	
+			adds to the end of an existing file
+		history >> old-file.txt
+	
+	!!
+			runs / fills in the previous command
+
+	sudo	super user do :
+			runs a command as the super user (root user)
+
+	&
+		use after a job command to open the job in the background (ex: top &)
+
+	*
+		wildcard representing zero or more characters
+
+	?
+		wildcard representing a single character
+
+	[]
+		wildcard representing a range of characters 
+			[dte] one character d, t, or e
+			[0-9] one number 0 through 9 inclusive
+			[^a-k] one letter not a-k 
+
+- - -  - - -
+
+	ctr+z
+		stops a job, which can be restarted later (sends a STOP signal to process)
+
+	ctr+c
+		kills a job (sends the TERM signal to process)
+
+- - - Notes - - -
+
+Paths
+	Paths that start with a / are absolute
+
+Root
+	topmost container of a filesystem
+	generally restricted to admin users
+	never delete anything located directly in the root
+
+var
+	for things that change regularly (like logs)
+etc
+	for files that don’t change regularly
+tmp
+	for temporary files, gets deleted regularly
+
+Flags
+	modify how commands work
+	can be combined together ( -lt , -tl , -l -t , -t -l)
+
+Naming
+	separate words with - , _ , or with “camel spacing” (myFolder)
+	don’t use spaces, because they can be a bitch in UNIX
+	Linux is case sensitive, OSX is case insensitive (commands are, however)
+
+Pipe ( | )
+	chains commands together
+	outputs the first command and uses it as input to the second
+
+Hidden files
+	files that begin with a dot (.) are default hidden
+
+‘Dirtying the directory’
+	anything that makes the working directory and repo different
+
+Process
+	an instance of a program 
+
+Job
+	a process that you own
+
+Signal
+	a message sent to a process by the operating system
+
+
+

@@ -1,0 +1,117 @@
+- - - Git Commands - - -
+
+	git config
+		change / display email and username, etc.
+
+	git init
+		initializes a repository in a directory
+
+	git status
+		shows the status of current save repo (branch , untracked files)
+
+	git add
+		adds a file to the staging area
+
+	git commit
+		commits files from the staging area to the repo
+		makes a permanent record of changes
+			changes made
+			identity of changer
+			date and time
+			brief message
+			universally unique ident for changes
+		+ flags
+			-m to add a message (speak in the present tense)
+			-a skips the staging area and commits all files
+
+	git log
+		logs git history
+
+	git branch
+		adds branch label where the HEAD is pointing, or shows the branch
+		+ argument 
+			label
+
+	git checkout
+		changes where the HEAD is pointing
+
+	git remote add origin https://github.com/ccoltrera/uge-workshop.git
+
+	git remote -v
+		verbose
+
+	git push -u origin master
+		(-u sets the preferences for a branch)
+
+	git branch -d git-notes
+		deletes a branch, will not be possible if master doesn’t have changes
+		(can use -D if branch changes not in master)
+
+
+** Git only changes files it’s tracking. Files changed in the working directory that aren’t in the repo won’t be affected by git
+
+
+- - - Git Directories - - -
+
+$git status
+
+Working directory		Staging area		Repo
+-----------------		------------		----
+unix_notes.txt
+
+
+$git add unix_notes.txt
+
+Working directory		Staging area		Repo
+-----------------		------------		----
+unix_notes.txt			unix_notes.txt
+
+
+$git commit -m ‘add unix notes’
+
+Working directory		Staging area		Repo
+-----------------		------------		----
+unix_notes.txt				 		unix_notes.txt
+
+
+
+
+- - - Visualizing Git - - -
+
+
+$git init
+
+[A]
+ ^master
+ ^HEAD
+
+$git commit
+
+[A]——————————[B]
+	      ^master
+	      ^HEAD
+
+$git branch git-notes
+
+[A]——————————[B]
+	      ^master
+	      ^HEAD
+	      ^git-notes
+
+$git checkout git-notes
+$git commit
+
+[A]——————————[B]——————————[C]
+	      ^master	   ^HEAD
+			   ^git-notes
+
+
+$git checkout master
+$git commit
+
+[A]——————————[B]——————————[C]
+	      |		   ^git-notes
+	      |
+	     [D]
+	      ^master
+	      ^HEAD
